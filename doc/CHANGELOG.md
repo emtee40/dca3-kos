@@ -12,6 +12,7 @@ Platform-specific changes are prefixed with the platform name, otherwise the cha
 - Add/Fixed stat() implementations for all filesystems [AB]
 - **Dreamcast**: Add network speedtest and pvr palette examples [AB]
 - **Dreamcast**: Cleaned up, documented, and enhanced BIOS font API [FG]
+- Rework PVR hybrid mode + IRQ handling [PC]
 - **Dreamcast**: Refactored Keyboard driver with new event-driven API [FG]
 
 ## KallistiOS version 2.1.0
