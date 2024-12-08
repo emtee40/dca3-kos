@@ -533,6 +533,9 @@ dirent_t *fs_readdir(file_t fd) {
         case 1:
             h->idx++;
 
+            if (temp_dirent == NULL)
+                return temp_dirent;
+            
             /* Did fs provide its own . directory? */
             if(strcmp(temp_dirent->name, ".") == 0) {
                 /* Read a new entry */
