@@ -30,7 +30,7 @@
    This beast looks daunting, but a lot of it is comments and it has some
    very nice thread safety support.
  */
-
+#if 0
 #include "pvr_mem_core.h"
 
 #include <kos/opts.h>
@@ -3621,3 +3621,4 @@ History:
          structure of old version,  but most details differ.)
 
 */
+#endif

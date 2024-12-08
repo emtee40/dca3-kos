@@ -30,6 +30,7 @@ instead. ^_^;
 /* Bring in some prototypes from pvr_mem_core.c */
 /* We can't directly include its header because of name clashes with
    the real malloc header */
+#if 0
 extern void * pvr_int_malloc(size_t bytes);
 extern void pvr_int_free(void *ptr);
 extern struct mallinfo pvr_int_mallinfo();
@@ -207,3 +208,4 @@ void pvr_mem_stats(void) {
     pvr_mem_print_list();
 #endif
 }
+#endif
