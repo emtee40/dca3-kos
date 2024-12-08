@@ -2629,6 +2629,7 @@ void *pvr_sq_set32(void *dest, uint32_t c, size_t n, pvr_dma_type_t type);
 
 /*********************************************************************/
 
+#include "../../hardware/pvr/pvr_internal.h"
 
 __END_DECLS
 
