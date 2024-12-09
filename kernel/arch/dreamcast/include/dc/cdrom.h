@@ -359,7 +359,7 @@ int cdrom_exec_cmd_ex(int cmd, void *param, int timeout, bool use_irq);
 
     \return                 \ref cd_cmd_response
 */
-int cdrom_abort_cmd(uint32_t timeout);
+int cdrom_abort_cmd(uint32_t timeout, bool abort_dma);
 
 /** \brief    Get the status of the GD-ROM drive.
     \ingroup  gdrom
@@ -496,7 +496,7 @@ int cdrom_stream_start(int sector, int cnt, int mode);
     \return                 \ref cd_cmd_response
     \see    cdrom_transfer_request
 */
-int cdrom_stream_stop(void);
+int cdrom_stream_stop(bool abort_dma);
 
 /** \brief    Request stream transfer.
     \ingroup  gdrom
