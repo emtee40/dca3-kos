@@ -133,7 +133,7 @@ __BEGIN_DECLS
             network sockets, that can be in use at a time. Decreasing this
             value can reduce memory usage.  */
 #ifndef FD_SETSIZE
-#define FD_SETSIZE 1024
+#define FD_SETSIZE 16
 #endif
 
 /** @} */
