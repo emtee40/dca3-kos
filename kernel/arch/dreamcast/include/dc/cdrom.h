@@ -352,10 +352,10 @@ int cdrom_exec_cmd_ex(int cmd, void *param, int timeout, bool use_irq);
     \ingroup  gdrom
 
     This function aborts current command using the BIOS syscall for
-    aborting GD-ROM commands. They can also abort non-blocked DMA transfers,
-    but it impossible for now because G1-ATA mutex are used.
+    aborting GD-ROM commands. They can also abort DMA transfers.
 
     \param  timeout         Timeout in milliseconds.
+    \param  abort_dma       Abort current G1 DMA transfer.
 
     \return                 \ref cd_cmd_response
 */
@@ -492,6 +492,8 @@ int cdrom_stream_start(int sector, int cnt, int mode);
     \ingroup  gdrom
 
     This function finishing stream commands.
+
+    \param  abort_dma       Abort current G1 DMA transfer.
 
     \return                 \ref cd_cmd_response
     \see    cdrom_transfer_request
