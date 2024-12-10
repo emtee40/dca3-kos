@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <h1 align="center">![Project Logo](doc/logo.png){width=50% height=50%}</h1>
+  <h1 align="center">![Project Logo](doc/logo.png)</h1>
   <p align="center">
     Independent SDK for the Sega Dreamcast
     <br />
