@@ -702,7 +702,7 @@ static ssize_t iso_read(void * h, void *buf, size_t bytes) {
     int rv, toread, thissect, c;
     uint8 * outbuf;
     file_t fd = (file_t)h;
-    size_t remain_size = 0, req_size;
+    // size_t remain_size = 0, req_size;
     uint32_t sector;
 
     /* Check that the fd is valid */
@@ -726,7 +726,7 @@ static ssize_t iso_read(void * h, void *buf, size_t bytes) {
         /* How much more can we read in the current sector? */
         thissect = 2048 - (fh[fd].ptr % 2048);
         sector = fh[fd].first_extent + (fh[fd].ptr / 2048);
-
+#if 0
         if((thissect & 31) == 0 && toread >= 32 && (((uintptr_t)outbuf) & 31) == 0) {
 
             if(stream_fd == fd) {
@@ -813,6 +813,7 @@ static ssize_t iso_read(void * h, void *buf, size_t bytes) {
         }
 
 read_loop:
+#endif
         if(thissect == 2048 && toread >= 2048 && (((uintptr_t)outbuf) & 31) == 0) {
             // Round it off to an even sector count
             thissect = toread / 2048;
@@ -833,7 +834,7 @@ read_loop:
             memcpy(outbuf, dcache[c]->data + (fh[fd].ptr % 2048), toread);
         }
 
-end_loop:
+// end_loop:
         /* Adjust pointers */
         outbuf += toread;
         fh[fd].ptr += toread;
