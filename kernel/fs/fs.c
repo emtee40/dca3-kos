@@ -39,6 +39,7 @@ something like this:
 #include <kos/mutex.h>
 #include <kos/nmmgr.h>
 #include <kos/dbgio.h>
+#include <kos/init.h>
 
 /* File handle structure; this is an entirely internal structure so it does
    not go in a header file. */
@@ -366,6 +367,12 @@ ssize_t fs_write(file_t fd, const void *buffer, size_t cnt) {
     fs_hnd_t *h;
 
     h = fs_map_hnd(fd);
+
+    /* Handle writing to stdout/stderr with no PTY FS. */
+    if(!(__kos_init_flags & INIT_FS_PTY) && (fd == 1 || fd == 2)) {
+        dbgio_write_buffer_xlat((const uint8 *)buffer, cnt);
+        return cnt;
+    }
 
     if(!h) return -1;
 
