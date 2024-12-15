@@ -224,7 +224,10 @@ int aica_get_pos(int ch) {
         __asm__ volatile ("nop");  /* Prevent loop from being optimized out */
 
     /* Update position counters */
+    chans[ch].aeg = SNDREG32(0x2810) & 0xffff;
     chans[ch].pos = SNDREG32(0x2814) & 0xffff;
+
+    chans[ch].looped |= (chans[ch].aeg & 0x8000) >> 15;
 
     return chans[ch].pos;
 }
