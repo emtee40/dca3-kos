@@ -23,7 +23,12 @@ SECTIONS
     KEEP (*(.fini))
   } =0
   .interp         : { *(.interp) }
-  .note.gnu.build-id : { *(.note.gnu.build-id) }
+  .note.gnu.build-id :
+    {
+        __build_id_start = .;
+        KEEP (*(.note.gnu.build-id))
+        __build_id_end = .;
+    }
   .hash           : { *(.hash) }
   .gnu.hash       : { *(.gnu.hash) }
   .dynsym         : { *(.dynsym) }
