@@ -77,6 +77,8 @@ int wait_start(void) {
     }
 }
 
+static unsigned char vmu_icon[1024];
+
 /* Here's the actual meat of it */
 void write_entry(void) {
     vmu_pkg_t   pkg;
@@ -88,8 +90,9 @@ void write_entry(void) {
     strcpy(pkg.desc_short, "VMU Test");
     strcpy(pkg.desc_long, "This is a test VMU file");
     strcpy(pkg.app_id, "KOS");
-    pkg.icon_cnt = 0;
-    pkg.icon_anim_speed = 0;
+    pkg.icon_cnt = 2;
+    pkg.icon_data = vmu_icon;
+    pkg.icon_anim_speed = 8;
     pkg.eyecatch_type = VMUPKG_EC_NONE;
     pkg.data_len = 4096;
     pkg.data = data;
@@ -97,6 +100,7 @@ void write_entry(void) {
     for(i = 0; i < 4096; i++)
         data[i] = i & 255;
 
+    vmu_pkg_load_icon(&pkg, "/rd/ebook.ico");
     vmu_pkg_build(&pkg, &pkg_out, &pkg_size);
 
     fs_unlink("/vmu/a1/TESTFILE");
